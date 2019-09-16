@@ -1,0 +1,102 @@
+<mat-card class="container">
+  <mat-card-header class="mat-card-header">
+   Register
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
+      <div>
+        <mat-form-field class="mat-form-field">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" placeholder="Please enter first name">
+          <mat-error *ngIf= "hasError('firstName', 'required')">First name required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="mat-form-field">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" placeholder="Please enter last name">
+          <mat-error *ngIf= "hasError('lastName', 'required')">Last name required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <mat-select formControlName="city">
+            <mat-option *ngFor="let city of cities" [value]="city.value">
+              {{city.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf= "hasError('city', 'required')">city required</mat-error>
+        </mat-form-field>
+  </div>
+
+      <div>
+        <mat-form-field class="mat-form-field">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput formControlName="mobileNumber" placeholder="Please enter mobile number">
+          <mat-error *ngIf= "hasError('mobileNumber', 'required')">Mobile number required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="mat-form-field">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="Please enter email">
+          <mat-hint>use like : demo@demo.com</mat-hint>
+          <mat-error *ngIf= "hasError('email', 'required')">Email required</mat-error>
+          <mat-error *ngIf= "hasError('email', 'email')">Please enter valid email id</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+          <mat-form-field class="mat-from-field">
+              <input matInput formControlName="password" placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+              <mat-error *ngIf= "hasError('password', 'required')">Password required</mat-error>
+              <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="mat-form-field">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [readonly]="inputReadonly" [matDatepicker]="picker" formControlName="dob" placeholder="Select date of birth" dis>
+          <mat-error *ngIf= "hasError('dob', 'required')">Date of birth required</mat-error>
+          <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div>
+            <mat-form-field class="mat-form-field">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender">
+                  <mat-option *ngFor="let item of genders" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf= "hasError('gender', 'required')">Gender required</mat-error>
+              </mat-form-field>
+      </div>
+
+      <div>
+          <mat-form-field class="mat-form-field">
+            <mat-label>Home Zip Code</mat-label>
+            <input matInput formControlName="homeZipCode" placeholder="Please enter home zip code">
+            <mat-error *ngIf= "hasError('homeZipCode', 'required')">Home zip code required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-card-actions class="mat-card-actions">
+              <button mat-raised-button [disabled]="!registerForm.valid" type="submit" color="primary">Submit</button>
+              <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+          </mat-card-actions>
+        </div>
+    </form>
+  </mat-card-content>
+</mat-card>

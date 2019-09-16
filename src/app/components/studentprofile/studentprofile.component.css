@@ -1,0 +1,19 @@
+.container-div {
+    width: 20rem;
+    margin-top:50px;
+    margin-bottom: 100px;
+    margin-left: 20px;
+
+}
+
+.mat-card {
+    background-color: coral;
+}
+
+.mat-card-title {
+    padding-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: blue;
+    font-size: 25px;
+    text-shadow: 0 0 10px black;
+}

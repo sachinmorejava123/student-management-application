@@ -1,0 +1,82 @@
+<mat-card class="container">
+        <mat-card-header class="mat-card-header">
+         Edit Profile
+        </mat-card-header>
+      
+        <mat-card-content>
+          <form [formGroup]="editProfileForm" (ngSubmit)="onFormSubmit()">
+            <div>
+              <mat-form-field class="mat-form-field">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName" placeholder="Please enter first name">
+                <mat-error *ngIf= "hasError('firstName', 'required')">First name required</mat-error>
+              </mat-form-field>
+            </div>
+      
+            <div>
+              <mat-form-field class="mat-form-field">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName" placeholder="Please enter last name">
+                <mat-error *ngIf= "hasError('lastName', 'required')">Last name required</mat-error>
+              </mat-form-field>
+            </div>
+      
+            <div>
+              <mat-form-field>
+                <mat-label>City</mat-label>
+                 <mat-select formControlName="city" >
+                  <mat-option *ngFor="let item of cities" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf= "hasError('city', 'required')">city required</mat-error>
+              </mat-form-field>
+        </div>
+      
+            <div>
+              <mat-form-field class="mat-form-field">
+                <mat-label>Mobile Number</mat-label>
+                <input matInput formControlName="mobileNumber" placeholder="Please enter mobile number">
+                <mat-error *ngIf= "hasError('mobileNumber', 'required')">Mobile number required</mat-error>
+              </mat-form-field>
+            </div>
+      
+            <div>
+              <mat-form-field class="mat-form-field">
+                <mat-label>Select birth date</mat-label>
+                <input matInput [readonly]="inputReadonly" [matDatepicker]="picker" formControlName="dob" placeholder="Select date of birth" dis>
+                <mat-error *ngIf= "hasError('dob', 'required')">Date of birth required</mat-error>
+                <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+      
+            <div>
+                  <mat-form-field class="mat-form-field">
+                      <mat-label>Gender</mat-label>
+                      <mat-select formControlName="gender">
+                        <mat-option *ngFor="let item1 of genders" [value]="item1.value">
+                          {{item1.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf= "hasError('gender', 'required')">Gender required</mat-error>
+                    </mat-form-field>
+            </div>
+      
+            <div>
+                <mat-form-field class="mat-form-field">
+                  <mat-label>Home Zip Code</mat-label>
+                  <input matInput formControlName="homeZipCode" placeholder="Please enter home zip code">
+                  <mat-error *ngIf= "hasError('homeZipCode', 'required')">Home zip code required</mat-error>
+                </mat-form-field>
+              </div>
+      
+              <div>
+                <mat-card-actions class="mat-card-actions">
+                    <button mat-raised-button [disabled]="!editProfileForm.valid" type="submit" color="primary">Save</button>
+                    <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+                </mat-card-actions>
+              </div>
+          </form>
+        </mat-card-content>
+      </mat-card>

@@ -1,0 +1,25 @@
+<div class="container container-div">
+    <mat-card>
+        <mat-card-header class="text-center">
+            <div>
+                <img mat-card-sm-image src="assets/logo.png" class="rounded" /><br>
+                <mat-card-title class="mat-card-title">
+                    <b>POLYGLOTS</b>
+                </mat-card-title>
+                <img mat-card-md-image src="assets/profile.png">
+                <mat-card-content>
+                    <div *ngIf="student">
+                        <h5>{{student.firstName}} {{student.lastName}}</h5>
+                        <h6>Student Id : {{student.id}}</h6>
+                        <h6>Mobile Number : {{student.mobileNumber}}</h6>
+                        <h6>Email Id : {{student.email}}</h6>
+                        <h6>DOB: {{student.dob}}</h6>
+                        <h6>Gender: {{student.gender}}</h6>
+                        <h6>City : {{student.city}}</h6>
+                        <h6>Home Zip Code : {{student.homeZipCode}}</h6>
+                    </div>
+                </mat-card-content>
+            </div>
+        </mat-card-header>
+    </mat-card>
+</div>
